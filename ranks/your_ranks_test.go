@@ -62,6 +62,7 @@ func TestUniqueDigits(test *testing.T) {
 		}
 	}
 
+	// remember, 0 doesn't count as a digit
 	testDigits([]int {1, 2, 3}, 3)
 	testDigits([]int {1}, 1)
 	testDigits([]int {123456789}, 9)

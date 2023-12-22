@@ -9,6 +9,7 @@ func IndexToYourRank(dst []int, idx int) {
 }
 
 // Accepts placements (0 .. 98), converts them to real placements (1 .. 99), and counts the digits
+// also, 0 doesn't count as a digit since there is no "0" wild mystery card
 func UniqueDigits(yourRanks []int) int {
 	digitMatches := make(map[int]bool)
 	for _, rank := range yourRanks {
