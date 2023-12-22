@@ -20,6 +20,19 @@ func TestIndexToYourRank(test *testing.T) {
 	if !reflect.DeepEqual(yourRankDst, expectedRanks) {
 		test.Errorf("expected counting numbers as first combo, got %v, %v", yourRankDst, expectedRanks)
 	}
+
+	// actual
+	IndexToYourRank(yourRankDst, TotalYourRankCombinations - 1)
+
+	// expected
+	for i := 0; i < TotalYourRanks; i++ {
+		expectedRanks[TotalYourRanks - i - 1] = totalPlacements - i - 1
+	}
+	
+	// condition
+	if !reflect.DeepEqual(yourRankDst, expectedRanks) {
+		test.Errorf("expected reverse counting numbers as last combo, got %v, %v", yourRankDst, expectedRanks)
+	}
 }
 
 func TestIndexToYourRankBound(test *testing.T) {
@@ -30,23 +43,6 @@ func TestIndexToYourRankBound(test *testing.T) {
     }()
 	yourRankDst := make([]int, TotalYourRanks)
 	IndexToYourRank(yourRankDst, TotalYourRankCombinations)
-}
-
-func TestTotalYourRankCombinations(test *testing.T) {
-	// actual
-	yourRankDst := make([]int, TotalYourRanks)
-	IndexToYourRank(yourRankDst, TotalYourRankCombinations - 1)
-
-	// expected
-	var expectedRanks = make([]int, TotalYourRanks)
-	for i := 0; i < TotalYourRanks; i++ {
-		expectedRanks[TotalYourRanks - i - 1] = totalPlacements - i - 1
-	}
-	
-	// condition
-	if !reflect.DeepEqual(yourRankDst, expectedRanks) {
-		test.Errorf("expected reverse counting numbers as last combo, got %v, %v", yourRankDst, expectedRanks)
-	}
 }
 
 func TestUniqueDigits(test *testing.T) {
