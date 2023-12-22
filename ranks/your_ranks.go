@@ -13,6 +13,8 @@ func IndexToYourRank(dst []int, idx int) {
 func UniqueDigits(yourRanks []int) int {
 	digitMatches := make(map[int]bool)
 	for _, rank := range yourRanks {
+		// I thought about using variables for 1s digit and 10s digit, but I thought this would be more fun.
+		// I don't even need a special case for leading 0s since they don't count as digits.
 		for digitCompare := rank + 1; digitCompare != 0; digitCompare /= 10 {
 			digit := digitCompare % 10
 			if digit != 0 {

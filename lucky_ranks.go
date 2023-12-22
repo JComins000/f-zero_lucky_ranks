@@ -7,9 +7,11 @@ import (
 
 func compareCompareMysteryWithYourRank(mysteryCards []ranks.MysteryCard, yourPlacements []int) int {
 	matches := 0
+	// order matters here. we care how many cards are matched
 	for _, card := range mysteryCards {
 		for _, placement := range yourPlacements {
 			if card.Match(placement) {
+				// when a placement matches a card, we count the card as matched and break to the next card
 				matches += 1
 				break
 			}
