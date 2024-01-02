@@ -25,6 +25,9 @@ func (placement PlacementCard) Match(yourRank int) bool {
 }
 
 func (machine MachineCard) Match(yourRank int) bool {
+	// in the game, you can select any machine and the
+	// cards are revealed before you finish your placements.
+	// it's hard not to match these cards if you're trying for matches
 	return true
 }
 
@@ -35,7 +38,7 @@ func (wild WildCard) Match(yourRank int) bool {
 	return realRankValue%10 == wild.value || realRankValue/10 == wild.value
 }
 
-func getMysteryRanks() []MysteryCard {
+func getAllMysteryRanks() []MysteryCard {
 	var allCards []MysteryCard
 
 	for i := 0; i < totalPlacements; i++ {
@@ -61,5 +64,5 @@ func IndexToMysteryRank(dst []MysteryCard, idx int) {
 	}
 }
 
-var allMysteryCards []MysteryCard = getMysteryRanks()
+var allMysteryCards []MysteryCard = getAllMysteryRanks()
 var TotalMysteryRankCombinations int = combin.Binomial(len(allMysteryCards), TotalMysteryCards)

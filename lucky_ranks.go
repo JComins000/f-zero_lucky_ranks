@@ -5,7 +5,7 @@ import (
 	"fzero/luckyranks/ranks"
 )
 
-func compareCompareMysteryWithYourRank(mysteryCards []ranks.MysteryCard, yourPlacements []int) int {
+func computeMatches(mysteryCards []ranks.MysteryCard, yourPlacements []int) int {
 	matches := 0
 	// order matters here. we care how many cards are matched
 	for _, card := range mysteryCards {
@@ -22,7 +22,7 @@ func compareCompareMysteryWithYourRank(mysteryCards []ranks.MysteryCard, yourPla
 
 func main() {
 	// not done yet
-	// TODO, test mystery ranks, continue iterating over everything
+	// TODO, continue iterating over everything in this file
 	fmt.Println(ranks.TotalYourRankCombinations)
 	yourRankDst := make([]int, ranks.TotalYourRanks)
 	ranks.IndexToYourRank(yourRankDst, 12)
@@ -31,7 +31,7 @@ func main() {
 	mysteryCardDst := make([]ranks.MysteryCard, ranks.TotalMysteryCards)
 	ranks.IndexToMysteryRank(mysteryCardDst, 14)
 	fmt.Println(mysteryCardDst)
-	fmt.Println(compareCompareMysteryWithYourRank(mysteryCardDst, yourRankDst))
+	fmt.Println(computeMatches(mysteryCardDst, yourRankDst))
 
 	fmt.Println(ranks.UniqueDigits(yourRankDst))
 	fmt.Println(ranks.UniqueDigits([]int{1, 2, 3, 4, 5}))
