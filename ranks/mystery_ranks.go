@@ -45,7 +45,7 @@ func getAllMysteryRanks() []MysteryCard {
 		allCards = append(allCards, PlacementCard{i})
 	}
 
-	for i := 0; i < totalMachines; i++ {
+	for i := 0; i < TotalMachines; i++ {
 		allCards = append(allCards, MachineCard{i})
 	}
 
