@@ -24,6 +24,10 @@ func readResults(results LuckyRankResults) {
 	var machineMatch, machineNoMatch [ranks.TotalMachines + 1]int
 	var digitMatch, digitNoMatch [8]int
 
+	var printPercentage = func(a int, b int) {
+		fmt.Printf("We counted %10d matches and %10d misses. %10d total, %.2f%%\n", a, b, a+b, float64(a)*100/float64(b))
+	}
+
 	for digitCount, digitTable := range results {
 		for machineCount, machineData := range digitTable {
 			machineNoMatch[machineCount] += machineData[0]
@@ -31,25 +35,30 @@ func readResults(results LuckyRankResults) {
 
 			machineMatch[machineCount] += machineData[1]
 			digitMatch[digitCount] += machineData[1]
-			fmt.Printf("With %v unique digits and %v machine cards, we counted %10d matches and %10d misses. %.2f%%\n", digitCount+2, machineCount, machineData[0], machineData[1], float64(machineData[0])*100/float64(machineData[1]))
+			fmt.Printf("With %v unique digits and %v machine cards: ", digitCount+2, machineCount)
+			printPercentage(machineData[1], machineData[0])
 		}
 		fmt.Println()
 	}
 	fmt.Println()
 
 	for digitCount := 0; digitCount < 8; digitCount++ {
-		fmt.Printf("With %v machine cards, we counted %10d matches and %10d misses. %.2f%%\n", digitCount, digitMatch[digitCount], digitNoMatch[digitCount], float64(digitMatch[digitCount])*100/float64(digitNoMatch[digitCount]))
+		fmt.Printf("With %v unique digits: ", digitCount+2)
+		printPercentage(digitMatch[digitCount], digitNoMatch[digitCount])
 	}
 	fmt.Println()
 
 	for machineCount := 0; machineCount < ranks.TotalMachines+1; machineCount++ {
 		totalMatch += machineMatch[machineCount]
 		totalNoMatch += machineNoMatch[machineCount]
-		fmt.Printf("With %v machine cards, we counted %10d matches and %10d misses. %.2f%%\n", machineCount, machineMatch[machineCount], machineNoMatch[machineCount], float64(machineMatch[machineCount])*100/float64(machineNoMatch[machineCount]))
+
+		fmt.Printf("With %v machine cards: ", machineCount)
+		printPercentage(machineMatch[machineCount], machineNoMatch[machineCount])
 	}
 	fmt.Println()
 
-	fmt.Printf("In total, we counted %10d matches and %10d misses. %.2f%%\n", totalMatch, totalNoMatch, float64(totalMatch)*100/float64(totalNoMatch))
+	fmt.Print("In total: ")
+	printPercentage(totalMatch, totalNoMatch)
 }
 
 func computeMatches(mysteryCards ranks.MysteryCardHand, yourPlacements ranks.YourRankHand) (int, bool) {
