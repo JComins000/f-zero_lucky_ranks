@@ -25,7 +25,7 @@ func readResults(results LuckyRankResults) {
 	var digitMatch, digitNoMatch [8]int
 
 	var printPercentage = func(a int, b int) {
-		fmt.Printf("We counted %10d matches and %10d misses. %10d total, %.2f%%\n", a, b, a+b, float64(a)*100/float64(b))
+		fmt.Printf("%10d matches, %10d misses. %10d sum,%.2f%%\n", a, b, a+b, float64(a)*100/float64(b))
 	}
 
 	for digitCount, digitTable := range results {
@@ -35,7 +35,7 @@ func readResults(results LuckyRankResults) {
 
 			machineMatch[machineCount] += machineData[1]
 			digitMatch[digitCount] += machineData[1]
-			fmt.Printf("With %v unique digits and %v machine cards: ", digitCount+2, machineCount)
+			fmt.Printf("%v unique digits, %v machine cards: ", digitCount+2, machineCount)
 			printPercentage(machineData[1], machineData[0])
 		}
 		fmt.Println()
@@ -43,7 +43,7 @@ func readResults(results LuckyRankResults) {
 	fmt.Println()
 
 	for digitCount := 0; digitCount < 8; digitCount++ {
-		fmt.Printf("With %v unique digits: ", digitCount+2)
+		fmt.Printf("%v unique digits: ", digitCount+2)
 		printPercentage(digitMatch[digitCount], digitNoMatch[digitCount])
 	}
 	fmt.Println()
@@ -52,7 +52,7 @@ func readResults(results LuckyRankResults) {
 		totalMatch += machineMatch[machineCount]
 		totalNoMatch += machineNoMatch[machineCount]
 
-		fmt.Printf("With %v machine cards: ", machineCount)
+		fmt.Printf("%v machine cards: ", machineCount)
 		printPercentage(machineMatch[machineCount], machineNoMatch[machineCount])
 	}
 	fmt.Println()

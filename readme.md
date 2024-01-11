@@ -4,13 +4,13 @@ This project is meant for me to practice go concepts while simulating an interes
 
 ## Golang
 
-I know Go's main use cases range from APIs, and CLIs, but my background is in testing and DevOps, so I went for a familiar scripting approach for the project while I acclimated to the language. I got to play around with types, structs, interfaces, loops and ranges, casting, fixed-length arrays, testing, and print formatting. This project was worth my time.
+I know Go's main use cases range from APIs, and CLIs, but my background is in testing and DevOps, so I went for a familiar scripting approach for the project while I acclimated to the language. I got to play around types, structs, interfaces, loops and ranges, casting, fixed-length arrays, testing, and print formatting. This project was worth my time.
 
 ## The Game
 
-On Nov. 28 2023, F-Zero 99 updated to include a new **lucky ranks** feature. Your placements in the first five races in a day would be compared with 14 mystery cards, revealed to the player after they had completed their placements. If a player uncovered 5 matches from revealed cards, that player would receive an unlockable cosmetic border for their player card, viewable by other players.
+On Nov. 28 2023, F-Zero 99 updated to include a new **lucky ranks** feature. Your placements in the first five races in a day would be compared 14 mystery cards, revealed to the player after they had completed their placements. If a player uncovered 5 matches from revealed cards, that player would receive an unlockable cosmetic border for their player card, viewable by other players.
 
-There are three types of mystery cards. There are 99 Placement cards (for each possible placement), as well as Machine Cards for all four machines, and Wild Cards for each digit. To optimize your ranks for the minigame, a player will want to collect as many unique digits as possible to guarantee as many matches with any WildCards the game could deal for that day. Machine Cards are revealed to the player before they complete their ranks, and a player can obtain any placement with any machine. Placement cards are all unique, and by looking for new wildcard digits, a player should have unique ranks to match against anyway.
+There are three types of mystery cards. There are 99 Placement cards (for each possible placement), as well as Machine Cards for all four machines, and Wild Cards for each digit. To optimize your ranks for the minigame, a player will want to collect as many unique digits as possible to guarantee as many matches any WildCards the game could deal for that day. Machine Cards are revealed to the player before they complete their ranks, and a player can obtain any placement any machine. Placement cards are all unique, and by looking for new wildcard digits, a player should have unique ranks to match against anyway.
 
 The matching strategy is easy to optimize, but I wanted to know how likely a player was receive 5 matches while trying to place optimally. For reference, here's what the game looks like. And here's a screenshot from when I got lucky on Jan. 1 2024.
 
@@ -35,89 +35,89 @@ Unsurprisingly, the odds seemed to be really low. Overall, even if a player plac
 A player is more likely not to be dealt a single machine card, but each card dealt will help immensely. If a player receives 2 machine cards, their chances go up dramatically-- Almost to the point of hopelessness if a player doesn't receive one.
 
 ```
-With 8 unique digits and 0 machine cards: We counted       2219 matches and    1401140 misses.    1403359 total, 0.16%
-With 8 unique digits and 1 machine cards: We counted       7247 matches and     819175 misses.     826422 total, 0.88%
-With 8 unique digits and 2 machine cards: We counted       6184 matches and     161210 misses.     167394 total, 3.84%
+8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 total, 0.16%
+8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 total, 0.88%
+8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 total, 3.84%
 
-With 9 unique digits and 0 machine cards: We counted        195 matches and      67776 misses.      67971 total, 0.29%
-With 9 unique digits and 1 machine cards: We counted        503 matches and      39271 misses.      39774 total, 1.28%
-With 9 unique digits and 2 machine cards: We counted        412 matches and       7737 misses.       8149 total, 5.33%
+9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 total, 0.29%
+9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 total, 1.28%
+9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 total, 5.33%
 ```
 
 ### Unique Digits
 Surprisingly, when a player controls their placements to cover as many wildcards as possible, their chance of getting 5 matches rises exponentially, around `145%` for each digit covered.
 ```
-With 6 unique digits: We counted      67974 matches and   20064782 misses.   20132756 total, 0.34%
-With 7 unique digits: We counted      60577 matches and   11919946 misses.   11980523 total, 0.51%
-With 8 unique digits: We counted      17558 matches and    2393941 misses.    2411499 total, 0.73%
-With 9 unique digits: We counted       1225 matches and     115369 misses.     116594 total, 1.06%
+6 unique digits:       67974 matches,  20064782 misses.   20132756 total, 0.34%
+7 unique digits:       60577 matches,  11919946 misses.   11980523 total, 0.51%
+8 unique digits:       17558 matches,   2393941 misses.    2411499 total, 0.73%
+9 unique digits:        1225 matches,    115369 misses.     116594 total, 1.06%
 ```
 
 ## Program Output
 ```
-With 2 unique digits and 0 machine cards: We counted          0 matches and        884 misses.        884 total, 0.00%
-With 2 unique digits and 1 machine cards: We counted          0 matches and        506 misses.        506 total, 0.00%
-With 2 unique digits and 2 machine cards: We counted          0 matches and        123 misses.        123 total, 0.00%
-With 2 unique digits and 3 machine cards: We counted          0 matches and          2 misses.          2 total, 0.00%
-With 2 unique digits and 4 machine cards: We counted          0 matches and          0 misses.          0 total, NaN%
+2 unique digits, 0 machine cards:           0 matches,       884 misses.        884 total, 0.00%
+2 unique digits, 1 machine cards:           0 matches,       506 misses.        506 total, 0.00%
+2 unique digits, 2 machine cards:           0 matches,       123 misses.        123 total, 0.00%
+2 unique digits, 3 machine cards:           0 matches,         2 misses.          2 total, 0.00%
+2 unique digits, 4 machine cards:           0 matches,         0 misses.          0 total, NaN%
 
-With 3 unique digits and 0 machine cards: We counted          4 matches and      96602 misses.      96606 total, 0.00%
-With 3 unique digits and 1 machine cards: We counted         31 matches and      57243 misses.      57274 total, 0.05%
-With 3 unique digits and 2 machine cards: We counted         72 matches and      11529 misses.      11601 total, 0.62%
-With 3 unique digits and 3 machine cards: We counted         28 matches and        933 misses.        961 total, 3.00%
-With 3 unique digits and 4 machine cards: We counted          3 matches and         30 misses.         33 total, 10.00%
+3 unique digits, 0 machine cards:           4 matches,     96602 misses.      96606 total, 0.00%
+3 unique digits, 1 machine cards:          31 matches,     57243 misses.      57274 total, 0.05%
+3 unique digits, 2 machine cards:          72 matches,     11529 misses.      11601 total, 0.62%
+3 unique digits, 3 machine cards:          28 matches,       933 misses.        961 total, 3.00%
+3 unique digits, 4 machine cards:           3 matches,        30 misses.         33 total, 10.00%
 
-With 4 unique digits and 0 machine cards: We counted        164 matches and    1580834 misses.    1580998 total, 0.01%
-With 4 unique digits and 1 machine cards: We counted       1006 matches and     928524 misses.     929530 total, 0.11%
-With 4 unique digits and 2 machine cards: We counted       1583 matches and     187443 misses.     189026 total, 0.84%
-With 4 unique digits and 3 machine cards: We counted        753 matches and      14996 misses.      15749 total, 5.02%
-With 4 unique digits and 4 machine cards: We counted        109 matches and        330 misses.        439 total, 33.03%
+4 unique digits, 0 machine cards:         164 matches,   1580834 misses.    1580998 total, 0.01%
+4 unique digits, 1 machine cards:        1006 matches,    928524 misses.     929530 total, 0.11%
+4 unique digits, 2 machine cards:        1583 matches,    187443 misses.     189026 total, 0.84%
+4 unique digits, 3 machine cards:         753 matches,     14996 misses.      15749 total, 5.02%
+4 unique digits, 4 machine cards:         109 matches,       330 misses.        439 total, 33.03%
 
-With 5 unique digits and 0 machine cards: We counted       1787 matches and    7253819 misses.    7255606 total, 0.02%
-With 5 unique digits and 1 machine cards: We counted       8815 matches and    4267916 misses.    4276731 total, 0.21%
-With 5 unique digits and 2 machine cards: We counted      11544 matches and     857473 misses.     869017 total, 1.35%
-With 5 unique digits and 3 machine cards: We counted       4651 matches and      66819 misses.      71470 total, 6.96%
-With 5 unique digits and 4 machine cards: We counted        482 matches and       1590 misses.       2072 total, 30.31%
+5 unique digits, 0 machine cards:        1787 matches,   7253819 misses.    7255606 total, 0.02%
+5 unique digits, 1 machine cards:        8815 matches,   4267916 misses.    4276731 total, 0.21%
+5 unique digits, 2 machine cards:       11544 matches,    857473 misses.     869017 total, 1.35%
+5 unique digits, 3 machine cards:        4651 matches,     66819 misses.      71470 total, 6.96%
+5 unique digits, 4 machine cards:         482 matches,      1590 misses.       2072 total, 30.31%
 
-With 6 unique digits and 0 machine cards: We counted       5992 matches and   11703105 misses.   11709097 total, 0.05%
-With 6 unique digits and 1 machine cards: We counted      24523 matches and    6875224 misses.    6899747 total, 0.36%
-With 6 unique digits and 2 machine cards: We counted      27248 matches and    1377615 misses.    1404863 total, 1.98%
-With 6 unique digits and 3 machine cards: We counted       9319 matches and     106473 misses.     115792 total, 8.75%
-With 6 unique digits and 4 machine cards: We counted        892 matches and       2365 misses.       3257 total, 37.72%
+6 unique digits, 0 machine cards:        5992 matches,  11703105 misses.   11709097 total, 0.05%
+6 unique digits, 1 machine cards:       24523 matches,   6875224 misses.    6899747 total, 0.36%
+6 unique digits, 2 machine cards:       27248 matches,   1377615 misses.    1404863 total, 1.98%
+6 unique digits, 3 machine cards:        9319 matches,    106473 misses.     115792 total, 8.75%
+6 unique digits, 4 machine cards:         892 matches,      2365 misses.       3257 total, 37.72%
 
-With 7 unique digits and 0 machine cards: We counted       6678 matches and    6958628 misses.    6965306 total, 0.10%
-With 7 unique digits and 1 machine cards: We counted      23253 matches and    4085913 misses.    4109166 total, 0.57%
-With 7 unique digits and 2 machine cards: We counted      22748 matches and     812431 misses.     835179 total, 2.80%
-With 7 unique digits and 3 machine cards: We counted       7296 matches and      61683 misses.      68979 total, 11.83%
-With 7 unique digits and 4 machine cards: We counted        602 matches and       1291 misses.       1893 total, 46.63%
+7 unique digits, 0 machine cards:        6678 matches,   6958628 misses.    6965306 total, 0.10%
+7 unique digits, 1 machine cards:       23253 matches,   4085913 misses.    4109166 total, 0.57%
+7 unique digits, 2 machine cards:       22748 matches,    812431 misses.     835179 total, 2.80%
+7 unique digits, 3 machine cards:        7296 matches,     61683 misses.      68979 total, 11.83%
+7 unique digits, 4 machine cards:         602 matches,      1291 misses.       1893 total, 46.63%
 
-With 8 unique digits and 0 machine cards: We counted       2219 matches and    1401140 misses.    1403359 total, 0.16%
-With 8 unique digits and 1 machine cards: We counted       7247 matches and     819175 misses.     826422 total, 0.88%
-With 8 unique digits and 2 machine cards: We counted       6184 matches and     161210 misses.     167394 total, 3.84%
-With 8 unique digits and 3 machine cards: We counted       1779 matches and      12151 misses.      13930 total, 14.64%
-With 8 unique digits and 4 machine cards: We counted        129 matches and        265 misses.        394 total, 48.68%
+8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 total, 0.16%
+8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 total, 0.88%
+8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 total, 3.84%
+8 unique digits, 3 machine cards:        1779 matches,     12151 misses.      13930 total, 14.64%
+8 unique digits, 4 machine cards:         129 matches,       265 misses.        394 total, 48.68%
 
-With 9 unique digits and 0 machine cards: We counted        195 matches and      67776 misses.      67971 total, 0.29%
-With 9 unique digits and 1 machine cards: We counted        503 matches and      39271 misses.      39774 total, 1.28%
-With 9 unique digits and 2 machine cards: We counted        412 matches and       7737 misses.       8149 total, 5.33%
-With 9 unique digits and 3 machine cards: We counted        109 matches and        574 misses.        683 total, 18.99%
-With 9 unique digits and 4 machine cards: We counted          6 matches and         11 misses.         17 total, 54.55%
+9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 total, 0.29%
+9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 total, 1.28%
+9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 total, 5.33%
+9 unique digits, 3 machine cards:         109 matches,       574 misses.        683 total, 18.99%
+9 unique digits, 4 machine cards:           6 matches,        11 misses.         17 total, 54.55%
 
 
-With 2 unique digits: We counted          0 matches and       1515 misses.       1515 total, 0.00%
-With 3 unique digits: We counted        138 matches and     166337 misses.     166475 total, 0.08%
-With 4 unique digits: We counted       3615 matches and    2712127 misses.    2715742 total, 0.13%
-With 5 unique digits: We counted      27279 matches and   12447617 misses.   12474896 total, 0.22%
-With 6 unique digits: We counted      67974 matches and   20064782 misses.   20132756 total, 0.34%
-With 7 unique digits: We counted      60577 matches and   11919946 misses.   11980523 total, 0.51%
-With 8 unique digits: We counted      17558 matches and    2393941 misses.    2411499 total, 0.73%
-With 9 unique digits: We counted       1225 matches and     115369 misses.     116594 total, 1.06%
+2 unique digits:           0 matches,      1515 misses.       1515 total, 0.00%
+3 unique digits:         138 matches,    166337 misses.     166475 total, 0.08%
+4 unique digits:        3615 matches,   2712127 misses.    2715742 total, 0.13%
+5 unique digits:       27279 matches,  12447617 misses.   12474896 total, 0.22%
+6 unique digits:       67974 matches,  20064782 misses.   20132756 total, 0.34%
+7 unique digits:       60577 matches,  11919946 misses.   11980523 total, 0.51%
+8 unique digits:       17558 matches,   2393941 misses.    2411499 total, 0.73%
+9 unique digits:        1225 matches,    115369 misses.     116594 total, 1.06%
 
-With 0 machine cards: We counted      17039 matches and   29062788 misses.   29079827 total, 0.06%
-With 1 machine cards: We counted      65378 matches and   17073772 misses.   17139150 total, 0.38%
-With 2 machine cards: We counted      69791 matches and    3415561 misses.    3485352 total, 2.04%
-With 3 machine cards: We counted      23935 matches and     263631 misses.     287566 total, 9.08%
-With 4 machine cards: We counted       2223 matches and       5882 misses.       8105 total, 37.79%
+0 machine cards:       17039 matches,  29062788 misses.   29079827 total, 0.06%
+1 machine cards:       65378 matches,  17073772 misses.   17139150 total, 0.38%
+2 machine cards:       69791 matches,   3415561 misses.    3485352 total, 2.04%
+3 machine cards:       23935 matches,    263631 misses.     287566 total, 9.08%
+4 machine cards:        2223 matches,      5882 misses.       8105 total, 37.79%
 
-In total: We counted     178366 matches and   49821634 misses.   50000000 total, 0.36%
+In total:      178366 matches,  49821634 misses.   50000000 total, 0.36%
 ```
