@@ -35,89 +35,89 @@ Unsurprisingly, the odds seemed to be really low. Overall, even if a player plac
 A player is more likely not to be dealt a single machine card, but each card dealt will help immensely. If a player receives 2 machine cards, their chances go up dramatically-- Almost to the point of hopelessness if a player doesn't receive one.
 
 ```
-8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 total, 0.16%
-8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 total, 0.88%
-8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 total, 3.84%
+8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 sum, 0.16%
+8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 sum, 0.88%
+8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 sum, 3.84%
 
-9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 total, 0.29%
-9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 total, 1.28%
-9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 total, 5.33%
+9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 sum, 0.29%
+9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 sum, 1.28%
+9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 sum, 5.33%
 ```
 
 ### Unique Digits
 Surprisingly, when a player controls their placements to cover as many wildcards as possible, their chance of getting 5 matches rises exponentially, around `145%` for each digit covered.
 ```
-6 unique digits:       67974 matches,  20064782 misses.   20132756 total, 0.34%
-7 unique digits:       60577 matches,  11919946 misses.   11980523 total, 0.51%
-8 unique digits:       17558 matches,   2393941 misses.    2411499 total, 0.73%
-9 unique digits:        1225 matches,    115369 misses.     116594 total, 1.06%
+6 unique digits:       67974 matches,  20064782 misses.   20132756 sum, 0.34%
+7 unique digits:       60577 matches,  11919946 misses.   11980523 sum, 0.51%
+8 unique digits:       17558 matches,   2393941 misses.    2411499 sum, 0.73%
+9 unique digits:        1225 matches,    115369 misses.     116594 sum, 1.06%
 ```
 
 ## Program Output
 ```
-2 unique digits, 0 machine cards:           0 matches,       884 misses.        884 total, 0.00%
-2 unique digits, 1 machine cards:           0 matches,       506 misses.        506 total, 0.00%
-2 unique digits, 2 machine cards:           0 matches,       123 misses.        123 total, 0.00%
-2 unique digits, 3 machine cards:           0 matches,         2 misses.          2 total, 0.00%
-2 unique digits, 4 machine cards:           0 matches,         0 misses.          0 total, NaN%
+2 unique digits, 0 machine cards:           0 matches,       884 misses.        884 sum, 0.00%
+2 unique digits, 1 machine cards:           0 matches,       506 misses.        506 sum, 0.00%
+2 unique digits, 2 machine cards:           0 matches,       123 misses.        123 sum, 0.00%
+2 unique digits, 3 machine cards:           0 matches,         2 misses.          2 sum, 0.00%
+2 unique digits, 4 machine cards:           0 matches,         0 misses.          0 sum, NaN%
 
-3 unique digits, 0 machine cards:           4 matches,     96602 misses.      96606 total, 0.00%
-3 unique digits, 1 machine cards:          31 matches,     57243 misses.      57274 total, 0.05%
-3 unique digits, 2 machine cards:          72 matches,     11529 misses.      11601 total, 0.62%
-3 unique digits, 3 machine cards:          28 matches,       933 misses.        961 total, 3.00%
-3 unique digits, 4 machine cards:           3 matches,        30 misses.         33 total, 10.00%
+3 unique digits, 0 machine cards:           4 matches,     96602 misses.      96606 sum, 0.00%
+3 unique digits, 1 machine cards:          31 matches,     57243 misses.      57274 sum, 0.05%
+3 unique digits, 2 machine cards:          72 matches,     11529 misses.      11601 sum, 0.62%
+3 unique digits, 3 machine cards:          28 matches,       933 misses.        961 sum, 3.00%
+3 unique digits, 4 machine cards:           3 matches,        30 misses.         33 sum, 10.00%
 
-4 unique digits, 0 machine cards:         164 matches,   1580834 misses.    1580998 total, 0.01%
-4 unique digits, 1 machine cards:        1006 matches,    928524 misses.     929530 total, 0.11%
-4 unique digits, 2 machine cards:        1583 matches,    187443 misses.     189026 total, 0.84%
-4 unique digits, 3 machine cards:         753 matches,     14996 misses.      15749 total, 5.02%
-4 unique digits, 4 machine cards:         109 matches,       330 misses.        439 total, 33.03%
+4 unique digits, 0 machine cards:         164 matches,   1580834 misses.    1580998 sum, 0.01%
+4 unique digits, 1 machine cards:        1006 matches,    928524 misses.     929530 sum, 0.11%
+4 unique digits, 2 machine cards:        1583 matches,    187443 misses.     189026 sum, 0.84%
+4 unique digits, 3 machine cards:         753 matches,     14996 misses.      15749 sum, 5.02%
+4 unique digits, 4 machine cards:         109 matches,       330 misses.        439 sum, 33.03%
 
-5 unique digits, 0 machine cards:        1787 matches,   7253819 misses.    7255606 total, 0.02%
-5 unique digits, 1 machine cards:        8815 matches,   4267916 misses.    4276731 total, 0.21%
-5 unique digits, 2 machine cards:       11544 matches,    857473 misses.     869017 total, 1.35%
-5 unique digits, 3 machine cards:        4651 matches,     66819 misses.      71470 total, 6.96%
-5 unique digits, 4 machine cards:         482 matches,      1590 misses.       2072 total, 30.31%
+5 unique digits, 0 machine cards:        1787 matches,   7253819 misses.    7255606 sum, 0.02%
+5 unique digits, 1 machine cards:        8815 matches,   4267916 misses.    4276731 sum, 0.21%
+5 unique digits, 2 machine cards:       11544 matches,    857473 misses.     869017 sum, 1.35%
+5 unique digits, 3 machine cards:        4651 matches,     66819 misses.      71470 sum, 6.96%
+5 unique digits, 4 machine cards:         482 matches,      1590 misses.       2072 sum, 30.31%
 
-6 unique digits, 0 machine cards:        5992 matches,  11703105 misses.   11709097 total, 0.05%
-6 unique digits, 1 machine cards:       24523 matches,   6875224 misses.    6899747 total, 0.36%
-6 unique digits, 2 machine cards:       27248 matches,   1377615 misses.    1404863 total, 1.98%
-6 unique digits, 3 machine cards:        9319 matches,    106473 misses.     115792 total, 8.75%
-6 unique digits, 4 machine cards:         892 matches,      2365 misses.       3257 total, 37.72%
+6 unique digits, 0 machine cards:        5992 matches,  11703105 misses.   11709097 sum, 0.05%
+6 unique digits, 1 machine cards:       24523 matches,   6875224 misses.    6899747 sum, 0.36%
+6 unique digits, 2 machine cards:       27248 matches,   1377615 misses.    1404863 sum, 1.98%
+6 unique digits, 3 machine cards:        9319 matches,    106473 misses.     115792 sum, 8.75%
+6 unique digits, 4 machine cards:         892 matches,      2365 misses.       3257 sum, 37.72%
 
-7 unique digits, 0 machine cards:        6678 matches,   6958628 misses.    6965306 total, 0.10%
-7 unique digits, 1 machine cards:       23253 matches,   4085913 misses.    4109166 total, 0.57%
-7 unique digits, 2 machine cards:       22748 matches,    812431 misses.     835179 total, 2.80%
-7 unique digits, 3 machine cards:        7296 matches,     61683 misses.      68979 total, 11.83%
-7 unique digits, 4 machine cards:         602 matches,      1291 misses.       1893 total, 46.63%
+7 unique digits, 0 machine cards:        6678 matches,   6958628 misses.    6965306 sum, 0.10%
+7 unique digits, 1 machine cards:       23253 matches,   4085913 misses.    4109166 sum, 0.57%
+7 unique digits, 2 machine cards:       22748 matches,    812431 misses.     835179 sum, 2.80%
+7 unique digits, 3 machine cards:        7296 matches,     61683 misses.      68979 sum, 11.83%
+7 unique digits, 4 machine cards:         602 matches,      1291 misses.       1893 sum, 46.63%
 
-8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 total, 0.16%
-8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 total, 0.88%
-8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 total, 3.84%
-8 unique digits, 3 machine cards:        1779 matches,     12151 misses.      13930 total, 14.64%
-8 unique digits, 4 machine cards:         129 matches,       265 misses.        394 total, 48.68%
+8 unique digits, 0 machine cards:        2219 matches,   1401140 misses.    1403359 sum, 0.16%
+8 unique digits, 1 machine cards:        7247 matches,    819175 misses.     826422 sum, 0.88%
+8 unique digits, 2 machine cards:        6184 matches,    161210 misses.     167394 sum, 3.84%
+8 unique digits, 3 machine cards:        1779 matches,     12151 misses.      13930 sum, 14.64%
+8 unique digits, 4 machine cards:         129 matches,       265 misses.        394 sum, 48.68%
 
-9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 total, 0.29%
-9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 total, 1.28%
-9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 total, 5.33%
-9 unique digits, 3 machine cards:         109 matches,       574 misses.        683 total, 18.99%
-9 unique digits, 4 machine cards:           6 matches,        11 misses.         17 total, 54.55%
+9 unique digits, 0 machine cards:         195 matches,     67776 misses.      67971 sum, 0.29%
+9 unique digits, 1 machine cards:         503 matches,     39271 misses.      39774 sum, 1.28%
+9 unique digits, 2 machine cards:         412 matches,      7737 misses.       8149 sum, 5.33%
+9 unique digits, 3 machine cards:         109 matches,       574 misses.        683 sum, 18.99%
+9 unique digits, 4 machine cards:           6 matches,        11 misses.         17 sum, 54.55%
 
 
-2 unique digits:           0 matches,      1515 misses.       1515 total, 0.00%
-3 unique digits:         138 matches,    166337 misses.     166475 total, 0.08%
-4 unique digits:        3615 matches,   2712127 misses.    2715742 total, 0.13%
-5 unique digits:       27279 matches,  12447617 misses.   12474896 total, 0.22%
-6 unique digits:       67974 matches,  20064782 misses.   20132756 total, 0.34%
-7 unique digits:       60577 matches,  11919946 misses.   11980523 total, 0.51%
-8 unique digits:       17558 matches,   2393941 misses.    2411499 total, 0.73%
-9 unique digits:        1225 matches,    115369 misses.     116594 total, 1.06%
+2 unique digits:           0 matches,      1515 misses.       1515 sum, 0.00%
+3 unique digits:         138 matches,    166337 misses.     166475 sum, 0.08%
+4 unique digits:        3615 matches,   2712127 misses.    2715742 sum, 0.13%
+5 unique digits:       27279 matches,  12447617 misses.   12474896 sum, 0.22%
+6 unique digits:       67974 matches,  20064782 misses.   20132756 sum, 0.34%
+7 unique digits:       60577 matches,  11919946 misses.   11980523 sum, 0.51%
+8 unique digits:       17558 matches,   2393941 misses.    2411499 sum, 0.73%
+9 unique digits:        1225 matches,    115369 misses.     116594 sum, 1.06%
 
-0 machine cards:       17039 matches,  29062788 misses.   29079827 total, 0.06%
-1 machine cards:       65378 matches,  17073772 misses.   17139150 total, 0.38%
-2 machine cards:       69791 matches,   3415561 misses.    3485352 total, 2.04%
-3 machine cards:       23935 matches,    263631 misses.     287566 total, 9.08%
-4 machine cards:        2223 matches,      5882 misses.       8105 total, 37.79%
+0 machine cards:       17039 matches,  29062788 misses.   29079827 sum, 0.06%
+1 machine cards:       65378 matches,  17073772 misses.   17139150 sum, 0.38%
+2 machine cards:       69791 matches,   3415561 misses.    3485352 sum, 2.04%
+3 machine cards:       23935 matches,    263631 misses.     287566 sum, 9.08%
+4 machine cards:        2223 matches,      5882 misses.       8105 sum, 37.79%
 
-In total:      178366 matches,  49821634 misses.   50000000 total, 0.36%
+In total:      178366 matches,  49821634 misses.   50000000 sum, 0.36%
 ```
