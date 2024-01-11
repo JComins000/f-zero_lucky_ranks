@@ -1,6 +1,6 @@
 # Intro
 
-This project is meant for me to practice go concepts while simulating an interesting question posed by my favorite game at the moment.
+This project is meant for me to practice go concepts while simulating an interesting question posed by my favorite game at the moment. [TL;DR here](#Takeaways)
 
 ## Golang
 
