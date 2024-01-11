@@ -53,7 +53,7 @@ With 8 unique digits: We counted      17558 matches and    2393941 misses.    24
 With 9 unique digits: We counted       1225 matches and     115369 misses.     116594 total, 1.06%
 ```
 
-## Program output
+## Program Output
 ```
 With 2 unique digits and 0 machine cards: We counted          0 matches and        884 misses.        884 total, 0.00%
 With 2 unique digits and 1 machine cards: We counted          0 matches and        506 misses.        506 total, 0.00%
