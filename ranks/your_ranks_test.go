@@ -7,8 +7,8 @@ import (
 
 func TestIndexToYourRank(test *testing.T) {
 	// actual
-	yourRankDst := make([]int, TotalYourRanks)
-	IndexToYourRank(yourRankDst, 0)
+	yourRankDst := YourRankHand{}
+	IndexToYourRank(&yourRankDst, 0)
 	
 	// expected
 	var expectedRanks = make([]int, TotalYourRanks)
@@ -17,12 +17,12 @@ func TestIndexToYourRank(test *testing.T) {
 	}
 	
 	// condition
-	if !reflect.DeepEqual(yourRankDst, expectedRanks) {
+	if !reflect.DeepEqual(yourRankDst[:], expectedRanks) {
 		test.Errorf("expected counting numbers as first combo, got %v, %v", yourRankDst, expectedRanks)
 	}
 
 	// actual
-	IndexToYourRank(yourRankDst, TotalYourRankCombinations - 1)
+	IndexToYourRank(&yourRankDst, TotalYourRankCombinations - 1)
 
 	// expected
 	for i := 0; i < TotalYourRanks; i++ {
@@ -30,7 +30,7 @@ func TestIndexToYourRank(test *testing.T) {
 	}
 	
 	// condition
-	if !reflect.DeepEqual(yourRankDst, expectedRanks) {
+	if !reflect.DeepEqual(yourRankDst[:], expectedRanks) {
 		test.Errorf("expected reverse counting numbers as last combo, got %v, %v", yourRankDst, expectedRanks)
 	}
 }
@@ -41,14 +41,15 @@ func TestIndexToYourRankBound(test *testing.T) {
             test.Errorf("IndexToYourRank did not panic when %v should be too large for it", TotalYourRankCombinations)
         }
     }()
-	yourRankDst := make([]int, TotalYourRanks)
-	IndexToYourRank(yourRankDst, TotalYourRankCombinations)
+	yourRankDst := YourRankHand{}
+	IndexToYourRank(&yourRankDst, TotalYourRankCombinations)
 }
 
 func TestUniqueDigits(test *testing.T) {
 	var testDigits = func(digits []int, expectedValue int) {
 		// convert digits to placements since the function uses placements (which are off by one)
 		actualPlacements := make([]int, len(digits))
+
 		for index, placement := range digits {
 			actualPlacements[index] = placement - 1
 		}

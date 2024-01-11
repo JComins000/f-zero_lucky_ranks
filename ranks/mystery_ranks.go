@@ -4,6 +4,8 @@ import (
 	"gonum.org/v1/gonum/stat/combin"
 )
 
+type MysteryCardHand [TotalMysteryCards]MysteryCard
+
 type MysteryCard interface {
 	Match(int) bool
 }
@@ -57,9 +59,9 @@ func getAllMysteryRanks() []MysteryCard {
 	return allCards
 }
 
-func IndexToMysteryRank(dst []MysteryCard, idx int) {
+func IndexToMysteryRank(dst *MysteryCardHand, idx int) {
 	combo := combin.IndexToCombination(nil, idx, len(allMysteryCards), TotalMysteryCards)
-	for i := 0; i < len(dst); i++ {
+	for i := 0; i < TotalMysteryCards; i++ {
 		dst[i] = allMysteryCards[combo[i]]
 	}
 }

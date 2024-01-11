@@ -4,8 +4,11 @@ import (
 	"gonum.org/v1/gonum/stat/combin"
 )
 
-func IndexToYourRank(dst []int, idx int) {
-	combin.IndexToCombination(dst, idx, totalPlacements, TotalYourRanks)
+type YourRankHand [TotalYourRanks]int
+
+func IndexToYourRank(dst *YourRankHand, idx int) {
+	// use copy to "cast" int slice to YourRankDeck
+	copy(dst[:], combin.IndexToCombination(nil, idx, totalPlacements, TotalYourRanks))
 }
 
 // Accepts placements (0 .. 98), converts them to real placements (1 .. 99), and counts the digits
@@ -18,7 +21,7 @@ func UniqueDigits(yourRanks []int) int {
 		for digitCompare := rank + 1; digitCompare != 0; digitCompare /= 10 {
 			digit := digitCompare % 10
 			if digit != 0 {
-				digitMatches[digitCompare % 10] = true
+				digitMatches[digitCompare%10] = true
 			}
 		}
 	}

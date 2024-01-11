@@ -46,17 +46,17 @@ func TestMysteryCardList(test *testing.T) {
 }
 
 func TestIndexToMysteryRank(test *testing.T) {
-	mysteryRankDst := make([]MysteryCard, TotalMysteryCards)
-	IndexToMysteryRank(mysteryRankDst, 0)
+	mysteryRankDst := MysteryCardHand{}
+	IndexToMysteryRank(&mysteryRankDst, 0)
 
-	if !reflect.DeepEqual(mysteryRankDst, allMysteryCards[:TotalMysteryCards]) {
+	if !reflect.DeepEqual(mysteryRankDst[:], allMysteryCards[:TotalMysteryCards]) {
 		test.Errorf("expecting first combo to be the beginning of the list, got %v, %v", mysteryRankDst, allMysteryCards[:TotalMysteryCards])
 	}
 
-	IndexToMysteryRank(mysteryRankDst, TotalMysteryRankCombinations-1)
+	IndexToMysteryRank(&mysteryRankDst, TotalMysteryRankCombinations-1)
 
-	if !reflect.DeepEqual(mysteryRankDst, allMysteryCards[len(allMysteryCards)-TotalMysteryCards:]) {
-		test.Errorf("expecting last combo to be the end of the list, got %v, %v", mysteryRankDst, allMysteryCards[:TotalMysteryCards])
+	if !reflect.DeepEqual(mysteryRankDst[:], allMysteryCards[len(allMysteryCards)-TotalMysteryCards:]) {
+		test.Errorf("expecting last combo to be the end of the list, got %v, %v", mysteryRankDst, allMysteryCards[len(allMysteryCards)-TotalMysteryCards:])
 	}
 }
 
@@ -66,6 +66,6 @@ func TestIndexToMysteryRankBound(test *testing.T) {
 			test.Errorf("IndexToMysteryRank did not panic when %v should be too large for it", TotalMysteryRankCombinations)
 		}
 	}()
-	mysteryRankDst := make([]MysteryCard, TotalMysteryCards)
-	IndexToMysteryRank(mysteryRankDst, TotalMysteryRankCombinations)
+	mysteryRankDst := MysteryCardHand{}
+	IndexToMysteryRank(&mysteryRankDst, TotalMysteryRankCombinations)
 }
