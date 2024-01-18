@@ -12,17 +12,16 @@ func IndexToYourRank(dst *YourRankHand, idx int) {
 }
 
 // Accepts placements (0 .. 98), converts them to real placements (1 .. 99), and counts the digits
-// also, 0 doesn't count as a digit since there is no "0" wild mystery card
 func UniqueDigits(yourRanks []int) int {
 	digitMatches := make(map[int]bool)
 	for _, rank := range yourRanks {
+		// Special case for leading Zeros
+		if rank < 10 {
+			digitMatches[0] = true
+		}
 		// I thought about using variables for 1s digit and 10s digit, but I thought this would be more fun.
-		// I don't even need a special case for leading 0s since they don't count as digits.
 		for digitCompare := rank + 1; digitCompare != 0; digitCompare /= 10 {
-			digit := digitCompare % 10
-			if digit != 0 {
-				digitMatches[digitCompare%10] = true
-			}
+			digitMatches[digitCompare%10] = true
 		}
 	}
 

@@ -30,6 +30,8 @@ func iterate(resultCounter *LuckyRankResults) {
 
 func random(resultCounter *LuckyRankResults, n int) {
 	yourRankDst := ranks.YourRankHand{}
+	// if we want perfect placements, use the line below-- remember placements are off by one
+	// yourRankDst := ranks.YourRankHand{0,22,44,66,88}
 	mysteryCardDst := ranks.MysteryCardHand{}
 	var progress int
 
@@ -40,9 +42,11 @@ func random(resultCounter *LuckyRankResults, n int) {
 			progress += 1
 			fmt.Print("#")
 		}
+		
 		yourRankIndex := rand.Intn(ranks.TotalYourRankCombinations)
-		mysteryRankIndex := rand.Intn(ranks.TotalMysteryRankCombinations)
 		ranks.IndexToYourRank(&yourRankDst, yourRankIndex)
+
+		mysteryRankIndex := rand.Intn(ranks.TotalMysteryRankCombinations)
 		ranks.IndexToMysteryRank(&mysteryCardDst, mysteryRankIndex)
 		// track number of digits
 		uniqueDigits := ranks.UniqueDigits(yourRankDst[:])

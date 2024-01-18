@@ -5,27 +5,29 @@ import (
 	"fzero/luckyranks/ranks"
 )
 
-type LuckyRankResults [8][5][2]int
+const possibleDigits = 8
+const leastPossibleDigits = 3
+type LuckyRankResults [possibleDigits][5][2]int
 
 func countResults(results *LuckyRankResults, digits int, machines int, match bool) {
-	// indexed by [unique digits - 2][machine cards present][1 or 0 representing 5 matches or not]
+	// indexed by [unique digits - 3][machine cards present][1 or 0 representing 5 matches or not]
 	// there will always be at least 2 unique digits for any 5 placements.
-	// for example, (01, 02, 12, 21, 11) has two unique digits (0s dont count)
+	// for example, (11, 12, 21, 22, x) has three unique digits
 	var gotFiveMatches int8
 	if match {
 		gotFiveMatches = 1
 	}
 	// convert to indices and store value
-	results[digits-2][machines][gotFiveMatches] += 1
+	results[digits-3][machines][gotFiveMatches] += 1
 }
 
 func readResults(results LuckyRankResults) {
 	var totalMatch, totalNoMatch int
 	var machineMatch, machineNoMatch [ranks.TotalMachines + 1]int
-	var digitMatch, digitNoMatch [8]int
+	var digitMatch, digitNoMatch [possibleDigits]int
 
 	var printPercentage = func(a int, b int) {
-		fmt.Printf("%10d matches, %10d misses. %10d sum,%.2f%%\n", a, b, a+b, float64(a)*100/float64(b))
+		fmt.Printf("%10d matches, %10d misses. %10d sum,%.2f%%\n", a, b, a+b, float64(a)*100/float64(a+b))
 	}
 
 	for digitCount, digitTable := range results {
@@ -35,15 +37,15 @@ func readResults(results LuckyRankResults) {
 
 			machineMatch[machineCount] += machineData[1]
 			digitMatch[digitCount] += machineData[1]
-			fmt.Printf("%v unique digits, %v machine cards: ", digitCount+2, machineCount)
+			fmt.Printf("%v unique digits, %v machine cards: ", digitCount+leastPossibleDigits, machineCount)
 			printPercentage(machineData[1], machineData[0])
 		}
 		fmt.Println()
 	}
 	fmt.Println()
 
-	for digitCount := 0; digitCount < 8; digitCount++ {
-		fmt.Printf("%v unique digits: ", digitCount+2)
+	for digitCount := 0; digitCount < possibleDigits; digitCount++ {
+		fmt.Printf("%v unique digits: ", digitCount+leastPossibleDigits)
 		printPercentage(digitMatch[digitCount], digitNoMatch[digitCount])
 	}
 	fmt.Println()

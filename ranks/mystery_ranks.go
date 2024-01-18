@@ -53,7 +53,7 @@ func getAllMysteryRanks() []MysteryCard {
 
 	for i := 0; i < totalWildDigits; i++ {
 		// ensure wild values range from 1 to 9 for convenience
-		allCards = append(allCards, WildCard{i + 1})
+		allCards = append(allCards, WildCard{i})
 	}
 
 	return allCards

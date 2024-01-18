@@ -58,13 +58,11 @@ func TestUniqueDigits(test *testing.T) {
 			test.Errorf("expected placements %v to have %v unique digits, but we got %v", digits, expectedValue, actualValue)
 		}
 	}
-
-	// remember, 0 doesn't count as a digit
-	testDigits([]int {1, 2, 3}, 3)
-	testDigits([]int {1}, 1)
-	testDigits([]int {123456789}, 9)
+	testDigits([]int {1, 2, 3}, 4)
+	testDigits([]int {1}, 2)
+	testDigits([]int {1234567890}, 10)
 	testDigits([]int {123456789123456789}, 9)
-	testDigits([]int {9}, 1)
-	testDigits([]int {10, 11}, 1)
-	testDigits([]int {40, 11}, 2)
+	testDigits([]int {9}, 2)
+	testDigits([]int {10, 1}, 2)
+	testDigits([]int {40, 11}, 3)
 }
